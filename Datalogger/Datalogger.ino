@@ -26,6 +26,7 @@ void error(uint8_t errno) {
 //   #define Serial SerialUSB
 
 void setup() {
+  Serial.begin(115200);
   pinMode(13, OUTPUT);
 
 
@@ -58,17 +59,20 @@ void setup() {
     digitalWrite(8, LOW);
     delay(100);
   }
-  
+  digitalWrite(13, LOW);
 }
 
 uint8_t i=0;
 void loop() {
   logfile.print(analogRead(0));
   logfile.print(",");
-  logfile.print(analogRead(1));
+  logfile.println(analogRead(1));
+  Serial.print(analogRead(0));
+  Serial.print(",");
+  Serial.println(analogRead(1));
   
   //Write to SD Card
   logfile.flush();
   
-  delay(20);
+  delay(10);
 }
