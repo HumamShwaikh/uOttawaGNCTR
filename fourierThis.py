@@ -4,11 +4,11 @@ import scipy.fftpack
 import csv
 
 import csv
-with open('dataBeforeFFT.csv', 'r') as file:
+with open('raceDay.csv', 'r') as file:
     reader = csv.reader(file)
     raw = []
     for row in reader:
-        raw.append(row[12])
+        raw.append(float(row[0])-float(row[1]))
 
 raw = raw[1:]
 
